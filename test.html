@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tom Haus | Technology Strategist & Leader</title>
+  <meta name="description" content="Official personal website for Tom Haus, technology strategist and leader.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon (Optional) -->
+  <!-- <link rel="icon" href="path/to/favicon.png" type="image/png"> -->
+
+  <style>
+    /* RESET & BASE */
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #000; /* Dark background for a bold aesthetic */
+      color: #fff;
+      line-height: 1.5;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+    ul { list-style: none; }
+    
+    /* HEADER / NAVIGATION */
+    header {
+      width: 100%;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.85);
+      position: fixed;
+      top: 0;
+      z-index: 999;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+    }
+    nav li {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    nav li a:hover {
+      opacity: 0.7;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* ensures full screen on most devices */
+      padding: 0 20px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    .hero .cta-button {
+      border: 2px solid #fff;
+      border-radius: 4px;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    .hero .cta-button:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* MAIN SECTIONS */
+    .section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+      font-weight: 700;
+    }
+    .section p {
+      font-size: 1.1rem;
+      max-width: 900px;
+      margin: 0 auto 20px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    /* TECHNOLOGY STRATEGY SECTION */
+    .tech-strategy {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .pillar {
+      flex: 1 1 300px;
+      background: #111;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    }
+    .pillar h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .pillar p {
+      font-size: 1rem;
+      text-align: left;
+      margin-bottom: 0;
+    }
+
+    /* CONTACT SECTION */
+    .contact-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      text-align: center;
+    }
+    .contact-content a:hover {
+      opacity: 0.7;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #111;
+      color: #888;
+      margin-top: 80px;
+    }
+    footer p {
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+    }
+    footer a {
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="nav-container">
+      <div class="nav-logo"><a href="#home">TOM HAUS</a></div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#strategy">Technology Strategy</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://linkedin.com/in/tomhaus" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <h1>Hello, I’m Tom Haus</h1>
+    <p>
+      Innovator • Consultant • Leader<br>
+      Building scalable solutions at the intersection of business strategy and cutting-edge technology.
+    </p>
+    <a href="#about" class="cta-button">Learn More</a>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="section" id="about">
+    <h2>About Me</h2>
+    <p>
+      With a career dedicated to designing technology strategies for businesses in rapidly shifting
+      markets, I’m driven by a vision: bridging the gap between innovation and real-world value.
+      My core style weaves **clarity**, **professionalism**, **positivity**, and **empathy** into
+      every interaction—reflecting my belief in candid communication and supportive leadership.
+    </p>
+    <p>
+      I’ve led transformative initiatives across IT consultancy, data analytics, and enterprise-scale
+      operations. Whether re-engineering critical workflows or overseeing large-scale system transitions,
+      I focus on creating positive, lasting impact. Collaboration isn’t just a buzzword; it’s the 
+      cornerstone of my success in driving projects from concept to completion.
+    </p>
+  </section>
+
+  <!-- TECHNOLOGY STRATEGY SECTION -->
+  <section class="section" id="strategy">
+    <h2>My Technology Strategy</h2>
+    <p>
+      The backbone of success lies in harnessing innovative technology to streamline processes, 
+      empower teams, and deliver tangible outcomes. Below are six foundational pillars I’ve honed 
+      over years of advisory and leadership.
+    </p>
+    <div class="tech-strategy">
+      <div class="pillar">
+        <h3>1. Standardization</h3>
+        <p>Consolidate and simplify processes to achieve uniform, scalable solutions that reduce costs 
+          and technical debt while maximizing speed to market.</p>
+      </div>
+      <div class="pillar">
+        <h3>2. Digitization</h3>
+        <p>Replace manual tasks with seamless digital experiences—enhancing efficiency, accuracy, 
+          and customer satisfaction.</p>
+      </div>
+      <div class="pillar">
+        <h3>3. Automation</h3>
+        <p>Automate repetitive workflows and self-service interfaces to cut down on errors, reduce 
+          overhead, and deliver real-time results for stakeholders.</p>
+      </div>
+      <div class="pillar">
+        <h3>4. Operating Model</h3>
+        <p>Adopt a balanced workforce strategy of core experts and strategic partners, ensuring 
+          agility, scalability, and consistent governance.</p>
+      </div>
+      <div class="pillar">
+        <h3>5. Security & Availability</h3>
+        <p>Design and implement systems that are resilient and always-on, meeting the demands of 
+          global, round-the-clock operations and protecting vital data.</p>
+      </div>
+      <div class="pillar">
+        <h3>6. Data & Analytics</h3>
+        <p>Leverage real-time insights to shape smarter decisions, boost operational efficiency, and 
+          open new revenue pathways.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section" id="contact">
+    <h2>Contact</h2>
+    <div class="contact-content">
+      <p>Have a project, question, or speaking opportunity? I’d love to connect!</p>
+      <a href="mailto:tom@example.com">tom@example.com</a>
+      <a href="https://linkedin.com/in/tomhaus" target="_blank" rel="noopener">LinkedIn Profile</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; <span id="year"></span> Tom Haus. All rights reserved.</p>
+    <p>Inspired by <a href="https://www.thedankoe.com" target="_blank" rel="noopener">The Dan Koe</a></p>
+  </footer>
+
+  <!-- OPTIONAL JAVASCRIPT -->
+  <script>
+    // Dynamically update year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
