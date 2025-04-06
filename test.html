@@ -141,7 +141,42 @@
       margin-bottom: 0;
     }
 
-    /* HOBBIES / PASSIONS SECTION */
+    /* BLOG SECTION */
+    .blog-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .blog-article {
+      background: #111;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      width: 100%;
+      text-align: left;
+    }
+    .blog-article h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .blog-article p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .blog-article a {
+      color: #fff;
+      text-decoration: underline;
+      margin-top: 10px;
+      display: inline-block;
+    }
+    .blog-article a:hover {
+      opacity: 0.7;
+    }
+
+    /* PASSIONS & BEYOND WORK SECTION */
     .hobbies-grid {
       display: flex;
       flex-wrap: wrap;
@@ -179,6 +214,27 @@
       opacity: 0.7;
     }
 
+    /* ABOUT ME SECTION (AT THE END) */
+    .about-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      gap: 20px;
+    }
+    .about-container img {
+      max-width: 200px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+    .about-container p {
+      font-size: 1.1rem;
+      text-align: center;
+      line-height: 1.7;
+      max-width: 800px;
+    }
+
     /* FOOTER */
     footer {
       text-align: center;
@@ -204,10 +260,11 @@
       <div class="nav-logo"><a href="#home">TOM HAUS</a></div>
       <nav>
         <ul>
-          <li><a href="#about">About</a></li>
           <li><a href="#strategy">Tech Strategy</a></li>
+          <li><a href="#blog">Blog</a></li>
           <li><a href="#passions">Beyond Work</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="#about-me">About Me</a></li>
           <li><a href="https://linkedin.com/in/tomhaus" target="_blank" rel="noopener">LinkedIn</a></li>
         </ul>
       </nav>
@@ -218,29 +275,11 @@
   <section class="hero" id="home">
     <h1>Hello, I’m Tom Haus</h1>
     <p>
-      Middle Market CTO at Transamerica <br>
-      Delivering financial security solutions through strategic tech roadmaps, 
-      AI-driven automation, and high-performing teams focused on execution.
+      Middle Market CTO at Transamerica<br>
+      Bridging technology and financial services to expand opportunities 
+      for the middle market—one breakthrough at a time.
     </p>
-    <a href="#about" class="cta-button">Learn More</a>
-  </section>
-
-  <!-- ABOUT SECTION -->
-  <section class="section" id="about">
-    <h2>About Me</h2>
-    <p>
-      As Middle Market CTO at Transamerica, my priority is shaping 
-      technology strategies that expand financial security options 
-      and accelerate growth. I believe the journey is just as important 
-      as the destination—a principle I weave into my leadership 
-      by guiding high-performing teams to set bold goals and deliver results quickly.
-    </p>
-    <p>
-      Whether modernizing core platforms or implementing AI-driven 
-      automation, I drive execution at scale, building confidence in 
-      solutions that power the financial industry. Together, we push boundaries 
-      and measure each step to continuously improve our path forward.
-    </p>
+    <a href="#strategy" class="cta-button">Explore My Approach</a>
   </section>
 
   <!-- TECHNOLOGY STRATEGY SECTION -->
@@ -303,6 +342,30 @@
     </div>
   </section>
 
+  <!-- BLOG SECTION -->
+  <section class="section" id="blog">
+    <h2>My Blog</h2>
+    <p>
+      Get insights into my latest thinking about technology, automation, 
+      and financial security. Below is a peek at my newest article on Ghost.
+    </p>
+    <div class="blog-container">
+      <!-- Example blog post card -->
+      <div class="blog-article">
+        <h3>“Redefining Financial Security with AI”</h3>
+        <p>
+          AI is redefining how we approach financial security, from simplifying underwriting 
+          to creating hyper-personalized experiences. In my latest post, 
+          I explore the profound shifts AI can bring to the middle market—
+          and why a forward-thinking strategy matters more than ever.
+        </p>
+        <a href="https://your-ghost-blog.com/redefining-financial-security-with-ai" target="_blank" rel="noopener">
+          Read the Full Article
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- PASSIONS & BEYOND WORK SECTION -->
   <section class="section" id="passions">
     <h2>Beyond Work</h2>
@@ -351,6 +414,36 @@
       <p>Questions, ideas, or simply want to connect? I’m here to help.</p>
       <a href="mailto:tom@example.com">tom@example.com</a>
       <a href="https://linkedin.com/in/tomhaus" target="_blank" rel="noopener">LinkedIn Profile</a>
+    </div>
+  </section>
+
+  <!-- ABOUT ME (MOVED TO THE END) -->
+  <section class="section" id="about-me">
+    <h2>About Me</h2>
+    <div class="about-container">
+      <!-- Replace 'tom-haus.jpg' with your actual image path -->
+      <img src="webResult.jpg" alt="Tom Haus headshot" width=150 height=150>
+      <p>
+        I'm Tom Haus, a technology leader with years of experience spearheading 
+        large-scale digital transformations for the financial industry. 
+        Currently serving as the Middle Market CTO at Transamerica, I've also held 
+        pivotal roles guiding multi-million-dollar programs in data analytics, 
+        enterprise architecture, and operational excellence.
+      </p>
+      <p>
+        My background combines hands-on technical expertise—like building 
+        automation tools and modernizing legacy systems—with a strategic vision 
+        for what’s next in financial services. This allows me to unify teams 
+        around a shared mission, delivering measurable impact through 
+        high-performing leadership, innovative strategies, and customer-focused 
+        solutions.
+      </p>
+      <p>
+        Inspired by my time at leading organizations, including those featured 
+        on my <a href="https://linkedin.com/in/tomhaus" target="_blank" rel="noopener">LinkedIn</a>, 
+        I see each challenge as an opportunity to shape a more secure, 
+        technologically advanced future for the middle market.
+      </p>
     </div>
   </section>
 
