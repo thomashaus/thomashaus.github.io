@@ -84,22 +84,54 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </script>
 
   <style>
+    /* THEME VARIABLES */
+    :root {
+      /* Dark mode (default) */
+      --bg-primary: #000;
+      --bg-secondary: #111;
+      --bg-header: rgba(0, 0, 0, 0.85);
+      --text-primary: #fff;
+      --text-secondary: #aaa;
+      --text-muted: #888;
+      --border-color: #fff;
+      --shadow-color: rgba(255, 255, 255, 0.05);
+      --shadow-img: rgba(255, 255, 255, 0.1);
+      --button-hover-bg: #fff;
+      --button-hover-text: #000;
+    }
+
+    /* Light mode */
+    body.light-mode {
+      --bg-primary: #fff;
+      --bg-secondary: #f5f5f5;
+      --bg-header: rgba(255, 255, 255, 0.95);
+      --text-primary: #000;
+      --text-secondary: #333;
+      --text-muted: #666;
+      --border-color: #000;
+      --shadow-color: rgba(0, 0, 0, 0.05);
+      --shadow-img: rgba(0, 0, 0, 0.1);
+      --button-hover-bg: #000;
+      --button-hover-text: #fff;
+    }
+
     /* RESET & BASE */
     * {
-      margin: 0; 
-      padding: 0; 
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
     }
     body {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      background-color: #000; /* Dark background for a bold aesthetic */
-      color: #fff;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
       line-height: 1.5;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     a {
       text-decoration: none;
-      color: #fff;
+      color: var(--text-primary);
     }
     ul { list-style: none; }
     
@@ -107,10 +139,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     header {
       width: 100%;
       padding: 20px;
-      background: rgba(0, 0, 0, 0.85);
+      background: var(--bg-header);
       position: fixed;
       top: 0;
       z-index: 999;
+      transition: background 0.3s ease;
+      box-shadow: 0 2px 5px var(--shadow-color);
     }
     .nav-container {
       max-width: 1200px;
@@ -158,15 +192,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       line-height: 1.7;
     }
     .hero .cta-button {
-      border: 2px solid #fff;
+      border: 2px solid var(--border-color);
       border-radius: 4px;
       padding: 1rem 2rem;
       font-size: 1rem;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+      color: var(--text-primary);
     }
     .hero .cta-button:hover {
-      background: #fff;
-      color: #000;
+      background: var(--button-hover-bg);
+      color: var(--button-hover-text);
     }
 
     /* MAIN SECTIONS */
@@ -201,10 +236,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .pillar {
       flex: 1 1 300px;
-      background: #111;
+      background: var(--bg-secondary);
       padding: 20px;
       border-radius: 6px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 10px var(--shadow-color);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
     }
     .pillar h3 {
       font-size: 1.2rem;
@@ -226,12 +262,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin: 0 auto;
     }
     .blog-article {
-      background: #111;
+      background: var(--bg-secondary);
       padding: 20px;
       border-radius: 6px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 10px var(--shadow-color);
       width: 100%;
       text-align: left;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
     }
     .blog-article h3 {
       font-size: 1.3rem;
@@ -242,7 +279,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       line-height: 1.6;
     }
     .blog-article a {
-      color: #fff;
+      color: var(--text-primary);
       text-decoration: underline;
       margin-top: 10px;
       display: inline-block;
@@ -262,11 +299,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .hobby {
       flex: 1 1 300px;
-      background: #111;
+      background: var(--bg-secondary);
       padding: 20px;
       border-radius: 6px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 10px var(--shadow-color);
       text-align: center;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
     }
     .hobby h3 {
       font-size: 1.2rem;
@@ -301,7 +339,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .about-container img {
       max-width: 200px;
       border-radius: 50%;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 10px var(--shadow-img);
+      transition: box-shadow 0.3s ease;
     }
     .about-container p {
       font-size: 1.1rem;
@@ -314,9 +353,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     footer {
       text-align: center;
       padding: 20px 0;
-      background-color: #111;
-      color: #888;
+      background-color: var(--bg-secondary);
+      color: var(--text-muted);
       margin-top: 80px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     footer p {
       font-size: 0.9rem;
@@ -324,7 +364,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     footer a {
       font-size: 0.9rem;
-      color: #888;
+      color: var(--text-muted);
     }
 
     /* MOBILE RESPONSIVE MEDIA QUERIES */
@@ -395,8 +435,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       position: absolute;
       top: -40px;
       left: 0;
-      background: #fff;
-      color: #000;
+      background: var(--button-hover-bg);
+      color: var(--button-hover-text);
       padding: 8px 16px;
       text-decoration: none;
       z-index: 1000;
@@ -405,20 +445,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       top: 0;
     }
 
+    /* Theme Toggle Button */
+    .theme-toggle {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 2px solid var(--border-color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      z-index: 1000;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      transition: all 0.3s ease;
+      color: var(--text-primary);
+    }
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px var(--shadow-color);
+    }
+    .theme-toggle:active {
+      transform: scale(0.95);
+    }
+
     /* Improved focus states for accessibility */
     a:focus,
     button:focus,
-    .cta-button:focus {
-      outline: 2px solid #fff;
+    .cta-button:focus,
+    .theme-toggle:focus {
+      outline: 2px solid var(--border-color);
       outline-offset: 2px;
     }
 
     /* Better contrast for footer links */
     footer a {
-      color: #aaa;
+      color: var(--text-secondary);
     }
     footer a:hover {
-      color: #fff;
+      color: var(--text-primary);
     }
   </style>
 </head>
@@ -555,15 +624,63 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </section>
   </main>
 
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+    <span id="themeIcon">☀️</span>
+  </button>
+
   <!-- FOOTER -->
   <footer>
     <p>&copy; <span id="year"></span> Tom Haus. All rights reserved.</p>
   </footer>
 
-  <!-- OPTIONAL JAVASCRIPT -->
+  <!-- JAVASCRIPT -->
   <script>
     // Dynamically update year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const body = document.body;
+
+    // Check for saved theme preference or default to dark mode
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+
+    // Apply saved theme on page load
+    if (currentTheme === 'light') {
+      body.classList.add('light-mode');
+      themeIcon.textContent = '🌙';
+    } else {
+      themeIcon.textContent = '☀️';
+    }
+
+    // Toggle theme when button is clicked
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+
+      // Update icon and save preference
+      if (body.classList.contains('light-mode')) {
+        themeIcon.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      } else {
+        themeIcon.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // Optional: Listen for system preference changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+          body.classList.remove('light-mode');
+          themeIcon.textContent = '☀️';
+        } else {
+          body.classList.add('light-mode');
+          themeIcon.textContent = '🌙';
+        }
+      }
+    });
   </script>
 </body>
 </html>
