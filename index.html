@@ -30,11 +30,58 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   
   <meta charset="UTF-8">
   <title>Tom Haus | Technology and Financial Services Transformation Leader</title>
-  <meta name="description" content="Official personal website for Tom Haus.">
+  <meta name="description" content="Tom Haus is a technology leader specializing in digital transformation for financial services. Expert in AI, automation, and building scalable solutions that drive financial security.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Favicon (Optional) -->
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Tom Haus | Technology and Financial Services Transformation Leader">
+  <meta property="og:description" content="Technology leader specializing in digital transformation for financial services. Expert in AI, automation, and building scalable solutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.tomhaus.io">
+  <meta property="og:image" content="https://www.tomhaus.io/tom-haus.jpg">
+  <meta property="og:site_name" content="Tom Haus">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tom Haus | Technology and Financial Services Transformation Leader">
+  <meta name="twitter:description" content="Technology leader specializing in digital transformation for financial services. Expert in AI, automation, and building scalable solutions.">
+  <meta name="twitter:image" content="https://www.tomhaus.io/tom-haus.jpg">
+
+  <!-- Resource Hints for Performance -->
+  <link rel="preconnect" href="https://tinylytics.app">
+  <link rel="preconnect" href="https://connect.facebook.net">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+
+  <!-- Favicon -->
   <link rel="icon" href="Monogram HQ.png" type="image/png">
+  <link rel="apple-touch-icon" href="Monogram HQ.png">
+
+  <!-- Structured Data (JSON-LD) for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tom Haus",
+    "url": "https://www.tomhaus.io",
+    "image": "https://www.tomhaus.io/tom-haus.jpg",
+    "jobTitle": "Technology Leader",
+    "description": "Technology leader specializing in digital transformation for financial services. Expert in AI, automation, and building scalable solutions that drive financial security.",
+    "sameAs": [
+      "https://linkedin.com/in/tomhaus",
+      "https://www.tomhaus.net",
+      "https://www.tomhaus.me",
+      "https://mastodon.social/@tomhaus",
+      "https://github.com/thomashaus"
+    ],
+    "knowsAbout": [
+      "Digital Transformation",
+      "Financial Services Technology",
+      "Artificial Intelligence",
+      "Automation",
+      "Technology Leadership"
+    ]
+  }
+  </script>
 
   <style>
     /* RESET & BASE */
@@ -279,6 +326,100 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-size: 0.9rem;
       color: #888;
     }
+
+    /* MOBILE RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 768px) {
+      /* Navigation */
+      .nav-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+      nav li {
+        font-size: 0.9rem;
+      }
+
+      /* Hero Section */
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+
+      /* Sections */
+      .section h2 {
+        font-size: 1.5rem;
+      }
+      .section p {
+        font-size: 1rem;
+      }
+
+      /* Grid Layouts */
+      .tech-strategy,
+      .hobbies-grid {
+        gap: 20px;
+      }
+      .pillar,
+      .hobby {
+        flex: 1 1 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Further adjustments for very small screens */
+      header {
+        padding: 15px;
+      }
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      .hero p {
+        font-size: 0.95rem;
+      }
+      .hero .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+      }
+      nav li {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Skip to content link for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #fff;
+      color: #000;
+      padding: 8px 16px;
+      text-decoration: none;
+      z-index: 1000;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Improved focus states for accessibility */
+    a:focus,
+    button:focus,
+    .cta-button:focus {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    /* Better contrast for footer links */
+    footer a {
+      color: #aaa;
+    }
+    footer a:hover {
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -287,11 +428,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- HEADER / NAV -->
   <header>
     <div class="nav-container">
-      <div class="nav-logo"><a href="#home">TOM HAUS</a></div>
-      <nav>
+      <div class="nav-logo"><a href="#home" aria-label="Tom Haus home">TOM HAUS</a></div>
+      <nav aria-label="Main navigation">
         <ul>
           <li><a href="#blog">Blog</a></li>
           <li><a href="#passions">Beyond Work</a></li>
@@ -303,6 +447,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </header>
 
   <!-- HERO SECTION -->
+  <main id="main-content">
   <section class="hero" id="home">
     <h1>Learn, Build, and Enjoy the Journey</h1>
     <p>
@@ -310,7 +455,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       I help people Learn new technology, Build transformative solutions, 
       and Enjoy the journey to financial security.
     </p>
-    <a href="#strategy" class="cta-button">Explore My Approach</a>
+    <a href="#blog" class="cta-button">Explore My Work</a>
   </section>
   
   <!-- BLOG SECTION -->
@@ -329,8 +474,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           in the middle market. This article dives into the crucial shifts AI brings to 
           underwriting, personalized insights, and more.
         </p>
-        <a href="https://your-ghost-blog.com/redefining-financial-security-with-ai" target="_blank" rel="noopener">
-          Read the Full Article
+        <a href="https://www.tomhaus.net" target="_blank" rel="noopener">
+          Visit My Blog
         </a>
       </div>
     </div>
@@ -382,7 +527,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="about-container">
       <!-- Replace 'tom-haus.jpg' with your actual image path -->
       <main class="h-card" rel="author">
-      <center><img class="u-photo" alt="My profile photo" src="tom-haus.jpg" alt="Tom Haus" width=150 height=150></center>
+      <center><img class="u-photo" alt="Tom Haus profile photo" src="tom-haus.jpg" width="150" height="150" loading="lazy"></center>
       <p class="p-note">
         I’m <span class="p-name">Tom Haus</span>, a technology leader with a deep background in guiding 
         large-scale digital transformations for financial services. My ethos: always 
@@ -408,6 +553,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </main>
 
   </section>
+  </main>
 
   <!-- FOOTER -->
   <footer>
