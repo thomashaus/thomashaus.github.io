@@ -23,10 +23,35 @@
       })();
     </script>
 
-    <script
-      src="https://tinylytics.app/embed/zRMRPa1khFdmEnogySZD.js"
-      defer
-    ></script>
+    <!-- Analytics setup: must run before Meta Pixel and GTM below -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      // The GTM container is shared with other sites. Its Custom HTML tags load
+      // Hotjar and Tinylytics, which this site doesn't use, so block that tag
+      // type here. GA4 tags are unaffected.
+      window.dataLayer.push({ "gtm.blocklist": ["html"] });
+
+      // Consent: GA4 and Meta tracking cookies stay off until the visitor accepts.
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      var savedConsent = null;
+      try {
+        savedConsent = localStorage.getItem("cookie-consent");
+      } catch {
+        /* storage blocked */
+      }
+      var consentState = savedConsent === "granted" ? "granted" : "denied";
+      gtag("consent", "default", {
+        ad_storage: consentState,
+        ad_user_data: consentState,
+        ad_personalization: consentState,
+        analytics_storage: consentState,
+        wait_for_update: 500,
+      });
+    </script>
+
     <!-- Meta Pixel Code -->
     <script>
       !(function (f, b, e, v, n, t, s) {
@@ -52,6 +77,7 @@
         "script",
         "https://connect.facebook.net/en_US/fbevents.js",
       );
+      fbq("consent", consentState === "granted" ? "grant" : "revoke");
       fbq("init", "3045467072349973");
       fbq("track", "PageView");
     </script>
@@ -71,6 +97,31 @@
       })(window, document, "script", "dataLayer", "GTM-5P83Q728");
     </script>
     <!-- End Google Tag Manager -->
+
+    <!-- Grafana Faro (Frontend Observability: page views, Web Vitals, JS errors) -->
+    <script
+      src="https://unpkg.com/@grafana/faro-web-sdk@1.19.0/dist/bundle/faro-web-sdk.iife.js"
+      integrity="sha384-AitrXVjbrKDuMxgQcS6OFQOJwzOB2TN/2ZBd2QOGo57UCKtiLVbVtsXRcCrClWoL"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        if (!window.GrafanaFaroWebSdk) return;
+        var host = window.location.hostname;
+        window.GrafanaFaroWebSdk.initializeFaro({
+          url: "https://faro-collector-prod-us-east-2.grafana.net/collect/ca11da4ded088ed11c444d08f1f3ad0c",
+          app: {
+            name: "tomhaus-io",
+            version: "1.0.0",
+            environment:
+              host === "www.tomhaus.io" || host === "tomhaus.io"
+                ? "production"
+                : "development",
+          },
+        });
+      });
+    </script>
 
     <title>
       Tom Haus | Technology and Financial Services Transformation Leader
@@ -92,11 +143,17 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.tomhaus.io" />
-    <meta property="og:image" content="https://www.tomhaus.io/tom-haus.jpg" />
+    <meta property="og:image" content="https://www.tomhaus.io/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Tom Haus — Technology &amp; Financial Services Transformation Leader"
+    />
     <meta property="og:site_name" content="Tom Haus" />
 
     <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
       content="Tom Haus | Technology and Financial Services Transformation Leader"
@@ -105,10 +162,14 @@
       name="twitter:description"
       content="Technology leader specializing in digital transformation for financial services. Expert in AI, automation, and building scalable solutions."
     />
-    <meta name="twitter:image" content="https://www.tomhaus.io/tom-haus.jpg" />
+    <meta name="twitter:image" content="https://www.tomhaus.io/og-image.png" />
 
     <!-- Resource Hints for Performance -->
-    <link rel="preconnect" href="https://tinylytics.app" />
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link
+      rel="preconnect"
+      href="https://faro-collector-prod-us-east-2.grafana.net"
+    />
     <link rel="preconnect" href="https://connect.facebook.net" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
 
@@ -310,36 +371,6 @@
         line-height: 1.7;
       }
 
-      /* TECHNOLOGY STRATEGY SECTION */
-      .tech-strategy {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 40px;
-        max-width: 1000px;
-        margin: 0 auto;
-        justify-content: center;
-        margin-top: 40px;
-      }
-      .pillar {
-        flex: 1 1 300px;
-        background: var(--bg-secondary);
-        padding: 20px;
-        border-radius: 6px;
-        box-shadow: 0 0 10px var(--shadow-color);
-        transition:
-          background 0.3s ease,
-          box-shadow 0.3s ease;
-      }
-      .pillar h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-      }
-      .pillar p {
-        font-size: 1rem;
-        text-align: left;
-        margin-bottom: 0;
-      }
-
       /* BLOG SECTION */
       .blog-container {
         display: flex;
@@ -407,18 +438,6 @@
         margin-bottom: 0;
       }
 
-      /* CONTACT SECTION */
-      .contact-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        text-align: center;
-      }
-      .contact-content a:hover {
-        opacity: 0.7;
-      }
-
       /* ABOUT ME SECTION */
       .about-container {
         display: flex;
@@ -472,10 +491,6 @@
         font-size: 0.9rem;
         margin-bottom: 5px;
       }
-      footer a {
-        font-size: 0.9rem;
-        color: var(--text-muted);
-      }
 
       /* MOBILE RESPONSIVE MEDIA QUERIES */
       @media (max-width: 768px) {
@@ -510,11 +525,9 @@
         }
 
         /* Grid Layouts */
-        .tech-strategy,
         .hobbies-grid {
           gap: 20px;
         }
-        .pillar,
         .hobby {
           flex: 1 1 100%;
         }
@@ -575,6 +588,73 @@
         transition: all 0.3s ease;
         color: var(--text-primary);
       }
+      /* Cookie consent banner */
+      .consent-banner {
+        position: fixed;
+        left: 20px;
+        right: 110px;
+        bottom: 30px;
+        max-width: 720px;
+        z-index: 1001;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px 20px;
+        padding: 16px 20px;
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        box-shadow: 0 4px 12px var(--shadow-color);
+      }
+      .consent-banner[hidden] {
+        display: none;
+      }
+      .consent-banner p {
+        flex: 1 1 280px;
+        margin: 0;
+        font-size: 0.95rem;
+        text-align: left;
+      }
+      .consent-actions {
+        display: flex;
+        gap: 10px;
+      }
+      .consent-btn {
+        font: inherit;
+        font-size: 0.95rem;
+        padding: 8px 18px;
+        border: 2px solid var(--border-color);
+        border-radius: 4px;
+        background: transparent;
+        color: var(--text-primary);
+        cursor: pointer;
+      }
+      .consent-btn:hover {
+        background: var(--button-hover-bg);
+        color: var(--button-hover-text);
+      }
+      .link-button {
+        font: inherit;
+        font-size: 0.9rem;
+        padding: 0;
+        border: none;
+        background: none;
+        color: var(--text-secondary);
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      .link-button:hover {
+        color: var(--text-primary);
+      }
+      @media (max-width: 480px) {
+        .consent-banner {
+          left: 12px;
+          right: 12px;
+          bottom: 100px;
+        }
+      }
+
       .theme-toggle:hover {
         transform: scale(1.1);
         box-shadow: 0 6px 16px var(--shadow-color);
@@ -590,14 +670,6 @@
       .theme-toggle:focus {
         outline: 2px solid var(--border-color);
         outline-offset: 2px;
-      }
-
-      /* Better contrast for footer links */
-      footer a {
-        color: var(--text-secondary);
-      }
-      footer a:hover {
-        color: var(--text-primary);
       }
     </style>
   </head>
@@ -667,18 +739,17 @@
       <section class="section" id="blog">
         <h2>My Blog</h2>
         <p>
-          Stay curious and keep learning—my latest posts on Ghost cover
-          everything from harnessing AI to fueling financial security. Here’s a
-          peek at one recent article.
+          Stay curious and keep learning—my writing covers everything from
+          harnessing AI to fueling financial security.
         </p>
         <div class="blog-container">
           <div class="blog-article">
-            <h3>“Redefining Financial Security with AI”</h3>
+            <h3>Redefining Financial Security with AI</h3>
             <p>
               AI is transforming how we Learn, Build, and Enjoy financial
-              solutions—especially in the middle market. This article dives into
-              the crucial shifts AI brings to underwriting, personalized
-              insights, and more.
+              solutions—especially in the middle market. I write about the
+              crucial shifts AI brings to underwriting, personalized insights,
+              and more.
             </p>
             <a href="https://www.tomhaus.net" target="_blank" rel="noopener">
               Visit My Blog
@@ -814,9 +885,35 @@
       <span id="themeIcon">☀️</span>
     </button>
 
+    <!-- Cookie consent banner (shown until the visitor chooses) -->
+    <section
+      class="consent-banner"
+      id="consentBanner"
+      aria-label="Cookie consent"
+      hidden
+    >
+      <p>
+        This site uses cookies for analytics (Google Analytics) and ad
+        measurement (Meta). Is that OK?
+      </p>
+      <div class="consent-actions">
+        <button type="button" class="consent-btn" id="consentDecline">
+          Decline
+        </button>
+        <button type="button" class="consent-btn" id="consentAccept">
+          Accept
+        </button>
+      </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
       <p>&copy; <span id="year"></span> Tom Haus. All rights reserved.</p>
+      <p>
+        <button type="button" class="link-button" id="cookieSettings">
+          Cookie settings
+        </button>
+      </p>
     </footer>
 
     <!-- JAVASCRIPT -->
@@ -868,6 +965,41 @@
           if (!readSavedTheme()) {
             applyTheme(e.matches ? "light" : "dark");
           }
+        });
+
+      // Cookie consent
+      const consentBanner = document.getElementById("consentBanner");
+
+      function setConsent(value) {
+        try {
+          localStorage.setItem("cookie-consent", value);
+        } catch {
+          // Storage blocked — choice applies for this visit only
+        }
+        const state = value === "granted" ? "granted" : "denied";
+        gtag("consent", "update", {
+          ad_storage: state,
+          ad_user_data: state,
+          ad_personalization: state,
+          analytics_storage: state,
+        });
+        fbq("consent", value === "granted" ? "grant" : "revoke");
+        consentBanner.hidden = true;
+      }
+
+      if (!savedConsent) consentBanner.hidden = false;
+
+      document
+        .getElementById("consentAccept")
+        .addEventListener("click", () => setConsent("granted"));
+      document
+        .getElementById("consentDecline")
+        .addEventListener("click", () => setConsent("denied"));
+      document
+        .getElementById("cookieSettings")
+        .addEventListener("click", () => {
+          consentBanner.hidden = false;
+          document.getElementById("consentAccept").focus();
         });
     </script>
   </body>
