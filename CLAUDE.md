@@ -31,7 +31,7 @@ The About section uses an h-card with `rel="me"` links. Keep the JSON-LD `sameAs
 ## Development Workflow
 
 ### Preview Changes Locally
-Serve over http (Faro's CORS allowlist includes `http://127.0.0.1:8765`):
+Serve over http. Faro's CORS allowlist only has the tomhaus.io origins, so local previews won't send data to Grafana (add the local origin in the Grafana app settings temporarily if you need to test it):
 ```bash
 python3 -m http.server 8765 --bind 127.0.0.1   # then open http://127.0.0.1:8765/
 ```
