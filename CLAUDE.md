@@ -17,9 +17,9 @@ This is a **GitHub Pages personal website** for Tom Haus, hosted at `www.tomhaus
 
 **Analytics Integration**
 The site includes three analytics platforms (all configured in `index.html` head):
-- Tinylytics: Line 4 (script src with embedded ID)
-- Facebook Meta Pixel: Lines 6-20 (init ID on line 15)
-- Google Tag Manager: Lines 23-29 (GTM ID on line 28)
+- Tinylytics: `tinylytics.app/embed/...` script in `<head>`
+- Facebook Meta Pixel: `fbq('init', ...)` in `<head>`; its `<noscript>` image is at the top of `<body>` (an `<img>` in `<head>` breaks head parsing)
+- Google Tag Manager: `GTM-5P83Q728` in `<head>` + noscript iframe at top of `<body>`. GA4 (`G-FVG6ZT55P0`) is configured inside the GTM container, not in this repo
 
 **Microformats**
 The About section uses h-card microformat for structured personal data with `rel="me"` links for identity verification across web profiles.
@@ -54,15 +54,15 @@ index.html          # Main production website
 test.html           # Development/preview version
 CNAME              # GitHub Pages custom domain (www.tomhaus.io)
 tom-haus.jpg       # Profile photo
-Monogram HQ.png    # Favicon
-webResult.jpg      # Image asset
+monogram.png       # Favicon
+webResult.jpg      # Unused image asset
 ```
 
 ## Common Modifications
 
 **Content Updates**: Edit HTML directly in `index.html` within the appropriate section div
 
-**Style Changes**: Modify CSS in the `<style>` block (lines 39-282). Key classes:
+**Style Changes**: Modify CSS in the `<style>` block in `<head>`; theme colors are CSS variables on `:root` / `html.light-mode`. Key classes:
 - `.hero` - Landing section
 - `.section` - Content sections wrapper
 - `.blog-article`, `.hobby`, `.pillar` - Content card components
